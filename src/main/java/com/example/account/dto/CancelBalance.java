@@ -1,21 +1,19 @@
 package com.example.account.dto;
 
-import com.example.account.controller.TransactionController;
 import com.example.account.type.TransactionResultType;
 import lombok.*;
 
 import javax.validation.constraints.*;
 import java.time.LocalDateTime;
 
-public class UseBalance {
+public class CancelBalance {
     @Getter
     @Setter
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Request {
-        @NotNull
-        @Min(1)
-        private Long userId;
+        @NotBlank
+        private String transactionId;
 
         @NotBlank
         @Size(min = 10,max = 10)
@@ -38,6 +36,7 @@ public class UseBalance {
         private String transactionId;
         private Long amount;
         private LocalDateTime transactedAt;
+
 
         public static Response from(TransactionDto transactionDto) {
 

@@ -1,14 +1,12 @@
 package com.example.account.dto;
 
-import com.example.account.domain.Account;
+
 import com.example.account.domain.Transaction;
 import com.example.account.type.TransactionResultType;
 import com.example.account.type.TransactionType;
 import lombok.*;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
+
 import java.time.LocalDateTime;
 
 @Setter

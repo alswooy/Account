@@ -8,7 +8,8 @@ import java.time.LocalDateTime;
 
 public class CreateAccount {
     @Getter
-    @Setter
+    @Builder
+    @NoArgsConstructor
     @AllArgsConstructor
     public static class Request{
         @NotNull
