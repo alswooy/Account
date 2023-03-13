@@ -94,6 +94,31 @@ class TransactionControllerTest {
                 .andExpect(jsonPath("$.transactionId").value("transactionIdForCancel"))
                 .andExpect(jsonPath("$.amount").value(54321));
     }
+    @Test
+    void successQueryTransaction() throws Exception {
+        // given
+
+        given(transactionService.queryTransaction(anyString()))
+                .willReturn(TransactionDto.builder()
+                        .accountNumber("1000000000")
+                        .transactionType(USE)
+                        .transactionResultType(S)
+                        .amount(54321L)
+                        .transactionId("transactionIdForCancel")
+                        .transactedAt(LocalDateTime.now())
+                        .build());
+        // when
+        // then
+        mockMvc.perform(get("/transaction/12345"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.accountNumber").value("1000000000"))
+                .andExpect(jsonPath("$.transactionType").value("USE"))
+                .andExpect(jsonPath("$.transactionResultType").value("S"))
+                .andExpect(jsonPath("$.transactionId").value("transactionIdForCancel"))
+                .andExpect(jsonPath("$.amount").value(54321));
+
+    }
 
 
 
